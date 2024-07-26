@@ -1,6 +1,6 @@
 ﻿using SFSAdv.Domain.Abstractions.Models;
-using SFSAdv.Domain.Aggregates.ProductAggregate;
-using SFSAdv.Domain.Aggregates.UserAggregate;
+using SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
+using SFSAdv.Domain.Aggregates.UserAggregate.Entities;
 
 namespace SFSAdv.Domain.Aggregates.OrderAggregate.Entities;
 

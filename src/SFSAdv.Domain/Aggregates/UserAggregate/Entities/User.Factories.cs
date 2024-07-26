@@ -1,6 +1,6 @@
 ﻿using SFSAdv.Domain.Utilities;
 
-namespace SFSAdv.Domain.Aggregates.UserAggregate;
+namespace SFSAdv.Domain.Aggregates.UserAggregate.Entities;
 
 public partial class User
 {

@@ -1,6 +1,6 @@
 ﻿using SFSAdv.Domain.Aggregates.OrderAggregate.Events;
-using SFSAdv.Domain.Aggregates.ProductAggregate;
-using SFSAdv.Domain.Aggregates.UserAggregate;
+using SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
+using SFSAdv.Domain.Aggregates.UserAggregate.Entities;
 using SFSAdv.Domain.Utilities;
 
 namespace SFSAdv.Domain.Aggregates.OrderAggregate.Entities;

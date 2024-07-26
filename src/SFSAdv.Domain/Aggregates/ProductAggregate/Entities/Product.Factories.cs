@@ -1,6 +1,6 @@
 ﻿using SFSAdv.Domain.Utilities;
 
-namespace SFSAdv.Domain.Aggregates.ProductAggregate;
+namespace SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
 
 public partial class Product
 {
@@ -8,9 +8,10 @@ public partial class Product
     {
     }
 
-    public static Product Create(Guid id, int inventoryCount, decimal price, double discount)
+    public static Product Create(Guid id, string title, int inventoryCount, decimal price, double discount)
     {
         Guard.AgainstEmpty(id, nameof(id));
+        Guard.AgainstNullOrEmpty(title, nameof(title));
         Guard.AgainstNegative(inventoryCount, nameof(inventoryCount));
         Guard.AgainstNegative(price, nameof(price));
         Guard.AgainstNegative((double)discount, nameof(discount));
@@ -18,15 +19,16 @@ public partial class Product
         return new Product
         {
             Id = id,
+            Title = title,
             InventoryCount = inventoryCount,
             Price = price,
             Discount = discount
         };
     }
 
-    public static Product CreateWithDefaults(int inventoryCount, decimal price, double discount)
+    public static Product CreateWithDefaults(string title, int inventoryCount, decimal price, double discount)
     {
-        return Create(Guid.NewGuid(), inventoryCount, price, discount);
+        return Create(Guid.NewGuid(), title, inventoryCount, price, discount);
     }
 }
 

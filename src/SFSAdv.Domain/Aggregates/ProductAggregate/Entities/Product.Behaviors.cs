@@ -1,6 +1,6 @@
 ﻿using SFSAdv.Domain.Abstractions.Exceptions;
 
-namespace SFSAdv.Domain.Aggregates.ProductAggregate;
+namespace SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
 
 public partial class Product
 {

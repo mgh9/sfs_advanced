@@ -2,7 +2,7 @@
 using SFSAdv.Domain.Aggregates.OrderAggregate.Entities;
 using SFSAdv.Domain.Utilities;
 
-namespace SFSAdv.Domain.Aggregates.UserAggregate;
+namespace SFSAdv.Domain.Aggregates.UserAggregate.Entities;
 
 public partial class User
 {
