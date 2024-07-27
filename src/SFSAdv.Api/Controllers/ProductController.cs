@@ -28,7 +28,15 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var product = await _mediator.Send(new GetProductQuery(id), cancellationToken);
-        return StatusCode(StatusCodes.Status200OK, product);
+
+        if (product is null)
+        {
+            return StatusCode(StatusCodes.Status404NotFound);
+        }
+        else
+        {
+            return StatusCode(StatusCodes.Status200OK, product);
+        }
     }
 
     [HttpPost]
