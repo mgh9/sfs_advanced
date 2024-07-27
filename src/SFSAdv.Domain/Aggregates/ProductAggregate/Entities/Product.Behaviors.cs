@@ -1,4 +1,5 @@
 ﻿using SFSAdv.Domain.Abstractions.Exceptions;
+using SFSAdv.Domain.Aggregates.ProductAggregate.Exceptions;
 
 namespace SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
 
@@ -12,12 +13,16 @@ public partial class Product
         InventoryCount += amount;
     }
 
-
-    public void ApplyDiscount(double discount)
+    public void ReduceInventory()
     {
-        if (discount < 0)
-            throw new InvalidInputDataException("Discount should be greater than or equal to 0.", nameof(discount));
+        if (InventoryCount <= 0)
+            throw new InsufficientInventoryException($"Insufficient inventory for the product Id `{Id}`");
 
-        Discount = discount;
+        InventoryCount--;
+    }
+
+    public decimal CalculateFinalPrice()
+    {
+        return Price - (Price * (decimal)Discount / 100);
     }
 }

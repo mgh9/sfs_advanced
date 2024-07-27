@@ -11,6 +11,11 @@ public partial class Order
     {
     }
 
+    public static Order CreateDefault(Product product, User buyer)
+    {
+        return Create(Guid.NewGuid(), product, buyer);
+    }
+
     public static Order Create(Guid id, Product product, User buyer)
     {
         Guard.AgainstEmpty(id, nameof(id));
@@ -20,14 +25,14 @@ public partial class Order
         var order = new Order
         {
             Id = id,
-            Product= product,
+            Product = product,
             Buyer = buyer,
             Price = product.Price,
             Discount = product.Discount,
             CreationDate = DateTime.Now,
         };
 
-        order.AddDomainEvent(new OrderCreatedEvent(id, product.Id, buyer.Id,product.Price, product.Discount, order.CreationDate));
+        order.AddDomainEvent(new OrderCreatedEvent(id, product.Id, buyer.Id, product.Price, product.Discount, order.CreationDate));
 
         return order;
     }

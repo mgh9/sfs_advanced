@@ -22,21 +22,21 @@ public static class Guard
             throw new InvalidInputDataException($"{parameterName} cannot be negative.");
     }
 
-    public static void AgainstEmpty(Guid value, string parameterName)
+    public static void AgainstEmpty(Guid? value, string parameterName)
     {
-        if (value == Guid.Empty)
+        if (value is null || value == Guid.Empty)
             throw new InvalidInputDataException($"{parameterName} cannot be empty.");
     }
 
-    public static void AgainstNullOrEmpty(string value, string parameterName)
+    public static void AgainstNullOrEmpty(string? value, string parameterName)
     {
         if (string.IsNullOrWhiteSpace(value))
             throw new InvalidInputDataException($"{parameterName} cannot be null or empty.");
     }
 
-    public static void AgainstNull(object value, string parameterName)
+    public static void AgainstNull(object? value, string parameterName)
     {
         if (value is null)
-            throw new InvalidInputDataException(parameterName);
+            throw new InvalidInputDataException($"{parameterName} cannot be null or empty.");
     }
 }
