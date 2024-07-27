@@ -1,4 +1,5 @@
-﻿using SFSAdv.Domain.Utilities;
+﻿using SFSAdv.Domain.Abstractions.Exceptions;
+using SFSAdv.Domain.Utilities;
 
 namespace SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
 
@@ -15,7 +16,11 @@ public partial class Product
         Guard.AgainstNegative(inventoryCount, nameof(inventoryCount));
         Guard.AgainstNegative(price, nameof(price));
         Guard.AgainstNegative((double)discount, nameof(discount));
-        
+        if(title.Length> 40)
+        {
+            throw new DomainValidationException("Product title must be less than 40 characters");
+        }
+
         return new Product
         {
             Id = id,
@@ -31,20 +36,3 @@ public partial class Product
         return Create(Guid.NewGuid(), title, inventoryCount, price, discount);
     }
 }
-
-//public record PositiveInteger : PositiveNumber<int>
-//{
-//    public PositiveInteger(int Value, bool CanBeZero = true) : base(Value, CanBeZero)
-//    {
-//    }
-//}
-
-//public record PositiveDecimal : PositiveNumber<decimal>
-//{
-//    public PositiveDecimal(decimal Value, bool CanBeZero = true) : base(Value, CanBeZero)
-//    {
-//    }
-//}
-
-////public record PositiveDecimal(decimal Value, bool CanBeZero = true);
-//public record PositiveDouble(double Value, bool CanBeZero = true);

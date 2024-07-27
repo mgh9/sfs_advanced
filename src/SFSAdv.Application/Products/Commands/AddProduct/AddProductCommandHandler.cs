@@ -6,7 +6,7 @@ using SFSAdv.Domain.Aggregates.ProductAggregate.Services;
 
 namespace SFSAdv.Application.Products.Commands.AddProduct;
 
-internal class AddProductCommandHandler : CommandHandler<AddProductCommand, Guid>
+public class AddProductCommandHandler : CommandHandler<AddProductCommand, Guid>
 {
     private readonly IProductService _productService;
     private readonly IProductRepository _productRepository;

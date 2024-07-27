@@ -16,4 +16,9 @@
     <ProjectReference Include="..\SFSAdv.Domain\SFSAdv.Domain.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>SFSAdv.Application.Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
 </Project>
