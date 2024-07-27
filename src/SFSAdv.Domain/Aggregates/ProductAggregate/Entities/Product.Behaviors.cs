@@ -8,7 +8,7 @@ public partial class Product
     public void IncreaseInventory(int amount)
     {
         if (amount < 0)
-            throw new InvalidInputDataException("Amount should be greater than 0.", nameof(amount));
+            throw new DomainValidationException("Amount should be greater than 0.", nameof(amount));
 
         InventoryCount += amount;
     }

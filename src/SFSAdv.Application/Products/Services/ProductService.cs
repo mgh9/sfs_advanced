@@ -17,7 +17,7 @@ public class ProductService : IProductService
     {
         if (await _productRepository.GetByTitleAsync(title, cancellationToken) is not null)
         {
-            throw new InvalidInputDataException("Product title must be unique.");
+            throw new DomainValidationException("Product title must be unique.");
         }
     }
 }

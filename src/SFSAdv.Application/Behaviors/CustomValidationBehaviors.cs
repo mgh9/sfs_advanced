@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
-using SFSAdv.Application.Exceptions;
+using SFSAdv.Application.Abstractions.Exceptions;
 
 namespace SFSAdv.Application.Behaviors;
 
@@ -39,7 +39,7 @@ public class CustomValidationBehaviors<TRequest, TResponse> : IPipelineBehavior<
 
         if (errorsDictionary.Count != 0)
         {
-            throw new CustomApplicationValidationException(errorsDictionary);
+            throw new ApplicationValidationException(errorsDictionary);
         }
 
         return await next();

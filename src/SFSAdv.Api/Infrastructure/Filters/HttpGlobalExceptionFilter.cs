@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SFSAdv.Api.Infrastructure.ActionResults;
-using SFSAdv.Application.Exceptions;
+using SFSAdv.Application.Abstractions.Exceptions;
 using SFSAdv.Domain.Abstractions.Exceptions;
 
 namespace SFSAdv.Api.Infrastructure.Filters;
@@ -31,7 +31,7 @@ public sealed class HttpGlobalExceptionFilter : IExceptionFilter
                 //envelope = Envelope.Create("Access Denied", HttpStatusCode.Unauthorized);
                 break;
 
-            case CustomApplicationValidationException validationException:
+            case ApplicationValidationException validationException:
                 envelope = CreateValidationErrorEnvelope(validationException);
                 break;
 
@@ -61,7 +61,7 @@ public sealed class HttpGlobalExceptionFilter : IExceptionFilter
             : "Sorry an error occurred.";
     }
 
-    private static Envelope CreateValidationErrorEnvelope(CustomApplicationValidationException exception)
+    private static Envelope CreateValidationErrorEnvelope(ApplicationValidationException exception)
     {
         var errors = exception.Errors
             .SelectMany(kvp => kvp.Value.Select(error => new { Field = kvp.Key, Error = error }))
