@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SFSAdv.Application.Abstractions.Persistence;
 using SFSAdv.Domain.Aggregates.OrderAggregate.Entities;
 using SFSAdv.Domain.Aggregates.ProductAggregate.Entities;
 using SFSAdv.Domain.Aggregates.UserAggregate.Entities;
 
 namespace SFSAdv.Infrastructure.Persistence;
 
-public class AppDbContext : DbContext
+public class AppDbContext : DbContext, IUnitOfWork
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

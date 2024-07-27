@@ -16,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\SFSAdv.Application\SFSAdv.Application.csproj" />
 		<ProjectReference Include="..\SFSAdv.Domain\SFSAdv.Domain.csproj" />
 	</ItemGroup>
 

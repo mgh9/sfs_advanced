@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SFSAdv.Application.Abstractions.Persistence;
 using SFSAdv.Domain.Abstractions.Persistence;
 
 namespace SFSAdv.Infrastructure.Persistence;
@@ -7,7 +8,7 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _context;
 
-    public DbContext Context => _context;
+    //public DbContext Context => _context;
 
     public UnitOfWork(AppDbContext context)
     {
